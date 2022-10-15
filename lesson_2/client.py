@@ -4,18 +4,21 @@ import json
 data = {
     "action": "msg",
     "to": "account_name",
-    "from": "account_name",
-    "encoding": "ascii",
+    "from": 1,
+    "encoding": ["utf-8", "ascii"],
     "message": "message"
 }
 
 with open('new_data.json', 'w') as f:
-    json.dump(data, f, sort_keys=True, indent=4)  # sort_keys - пересортирует ключи по алфавиту, indent - отступ
-#
-# {
-#   "action": "msg",
-#   "encoding": "ascii",
-#   "from": "account_name",
-#   "message": "message",
-#   "to": "account_name"
-# }
+    json.dump(data, f, sort_keys=True, indent=4)
+
+with open('new_data.json') as f:
+    data = json.load(f)
+    for k, v in data.items():
+        print(k, v, type(v))
+
+# action msg <class 'str'>
+# encoding ['utf-8', 'ascii'] <class 'list'>
+# from 1 <class 'int'>
+# message message <class 'str'>
+# to account_name <class 'str'>
