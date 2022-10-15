@@ -1,10 +1,13 @@
+# python3 client.py
 import csv
 
 with open('data.csv') as f:
     f_reader = csv.reader(f)
-    print((f_reader, type(f_reader)))  # итератор # (<_csv.reader object at 0x7fa70ad6beb0>, <class '_csv.reader'>)
-    print(next(f_reader))  # первая строка # ['hostname', 'vendor', 'model', 'location']
-    print(type(next(f_reader)))  # <class 'list'>
+    for l in f_reader:
+        print(l)
 
-
-
+# ['hostname', 'vendor', 'model', 'location']
+# ['kp1', 'Cisco', '2960', 'Moscow']
+# ['kp2', 'Cisco', '2960', 'Novosoborsk']
+# ['kp3', 'Cisco', '2960', 'Kazan']
+# ['kp4', 'Cisco', '2960', 'Tomsk']
