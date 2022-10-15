@@ -10,7 +10,12 @@ data = {
 }
 
 with open('new_data.json', 'w') as f:
-    json_string = json.dumps(data)
-    f.write(json_string)
-
-# {"action": "msg", "to": "account_name", "from": "account_name", "encoding": "ascii", "message": "message"}
+    json.dump(data, f, sort_keys=True, indent=4)  # sort_keys - пересортирует ключи по алфавиту, indent - отступ
+#
+# {
+#   "action": "msg",
+#   "encoding": "ascii",
+#   "from": "account_name",
+#   "message": "message",
+#   "to": "account_name"
+# }
