@@ -6,7 +6,7 @@
 import yaml
 
 action_list = ['msg1', 'msg2', 'msg3']
-to_list = ['account1', 'account2', 'account3']
+to_list = ['account1', 'account2', {'message': 'hi', 'result': 0, 'params': ['arg1', 'arg2']}]
 
 data_to_uml = {'action': action_list, 'to': to_list}
 

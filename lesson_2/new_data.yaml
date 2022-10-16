@@ -5,4 +5,8 @@ action:
 to:
 - account1
 - account2
-- account3
+- message: hi
+  params:
+  - arg1
+  - arg2
+  result: 0
