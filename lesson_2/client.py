@@ -1,14 +1,21 @@
-# python3 client.py
-# virtualenv venv
-# source venv/bin/activate
-# pip install pyyaml
+import csv
 
-import yaml
+with open('data.csv') as f:
+    f_reader1 = csv.reader(f)
+    # Полученный итератор можно преобразовать в список
+    #print(list(f_reader1))
+    # [['hostname', 'vendor', 'model', 'location'],
+    #  ['kp1', 'Cisco', '2960', 'Moscow'],
+    #  ['kp2', 'Cisco', '2960', 'Novosoborsk'],
+    #  ['kp3', 'Cisco', '2960', 'Kazan'],
+    #  ['kp4', 'Cisco', '2960', 'Tomsk']]
 
-action_list = ['msg1', 'msg2', 'msg3']
-to_list = ['account1', 'account2', {'message': 'hi', 'result': 0, 'params': ['arg1', 'arg2']}]
+    f_reader2 = csv.DictReader(f)
+    for row in f_reader2:
+        # Можно выводить содержимое отдельных столбцов.
+        print(row['hostname'], ['model'])
 
-data_to_uml = {'action': action_list, 'to': to_list}
-
-with open('new_data.yaml', 'w') as f:
-    yaml.dump(data_to_uml, f, default_flow_style=False)
+# kp1 ['model']
+# kp2 ['model']
+# kp3 ['model']
+# kp4 ['model']
