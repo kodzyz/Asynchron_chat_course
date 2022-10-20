@@ -2,15 +2,12 @@ from socket import *
 
 
 def main():
-    s = socket(AF_INET, SOCK_STREAM)
-    s.connect(('localhost', 10000))
+    s = socket(AF_INET, SOCK_DGRAM)
+    s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 
     while True:
-        msg = str(input('Введите сообщение серверу: '))
-        msg_encoded = msg.encode('utf-8')
-        s.send(msg_encoded)
-        data = s.recv(1024)  # сообщение от сервера
-        print('Сервер: ', data.decode('utf-8'))
+        msg = 'Сообщение'.encode('utf-8')
+        s.sendto(msg, ('localhost', 10000))
 
 
 if __name__ == '__main__':
@@ -19,7 +16,4 @@ if __name__ == '__main__':
     except Exception as e:
         print(e)
 
-# Введите сообщение серверу: close
-# Сервер:  Я сервер: Ваше сообщение получено
-# Введите сообщение серверу: close
-# Сервер:
+# python3 client.py
