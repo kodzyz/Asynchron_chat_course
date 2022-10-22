@@ -1,18 +1,18 @@
 import sys
 import argparse
 
+# два позиционных параметра -
+# сделаем их оба именованными,
+# в этом случае порядок их передачи будет не важен
 
-# ожидает два позиционных параметра -
-# имя приветствуемого человека и число,
-# обозначающее, сколько раз его нужно поприветствовать.
-
-# python3 step.py Петя 3
-
+# python3 step.py --name Петя --count 3
+# python3 step.py --count 3 --name Петя
+# python3 step.py -c 3 -n Петя
 
 def createParser():
     parser = argparse.ArgumentParser()  # экземпляр класса ArgumentParser
-    parser.add_argument('name')
-    parser.add_argument('count', type=int)
+    parser.add_argument('-n', '--name')
+    parser.add_argument('-c', '--count', type=int, default=1)
     return parser
 
 
