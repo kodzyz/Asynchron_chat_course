@@ -8,7 +8,7 @@ import argparse
 
 def createParser():
     parser = argparse.ArgumentParser()  # экземпляр класса ArgumentParser
-    parser.add_argument('-n', '--name', default='мир')  # добавили ожидаемый параметр в командной строке (nargs='?')- необязательный
+    parser.add_argument('-n', '--name')  # добавили ожидаемый параметр в командной строке (nargs='?')- необязательный
     return parser
 
 
@@ -17,10 +17,10 @@ if __name__ == '__main__':
     namespace = parser.parse_args(sys.argv[1:])  # метод 'parse_args' для разбора командной строки
 
     print(namespace)
-    # Namespace(name='мир')
+    # Namespace(name=None)
     # Namespace(name='Вася')
     # Namespace(name='Вася')
 
-    print(f'Привет, {namespace.name}!')  # Привет, мир! # Привет, Вася!
+    print(f'Привет, {namespace.name}!')  # name=None! # Привет, Вася!
 
 
