@@ -1,44 +1,41 @@
-# ф-я для теста
-def get_params():
-    return (1, 'config')
+import datetime
+from collections import namedtuple
+
+Salary = namedtuple('Salary', ('surname', 'name', 'worked', 'rate'))
 
 
-# вариант теста 1
-def test_get_params():
-    if get_params() == (1, 'config'):
-        print('Test passed')
+def get_salary(line):
+    ''' Вычисление зарплаты работника '''
+    line = line.split()
+    if line:
+        data = Salary(*line)
+        fio = ' '.join((data.surname, data.name))
+        salary = int(data.worked) * int(data.rate)
+        res = (fio, salary)
     else:
-        print('Test not passed')
+        res = ()
+    return res
 
 
-# вариант теста 2
-def test_get_params1():
-    print('Test passed') if get_params() == (1, 'config') else print('Test not passed')
+def test_get_salary_summ():
+    assert get_salary('Лютиков    Руслан   60  1000') == \
+           ('Лютиков Руслан', 60000), 'Неверная сумма математики'
 
 
-# вариант теста 3
-# оператор 'assert' для сравнения правой и левой части, возвращает True или False
-def test_get_params2():
-    assert get_params() == (1, 'config')  # (2, 'config') -> False -> # AssertionError
+def test_get_salary_fio():
+    assert get_salary('Лютиков    Руслан   60  1000')[0] == 'Лютиков Руслан', 'Неверное имя филологи'
 
 
-test_get_params()
-test_get_params1()
-test_get_params2()
-
-# вариант использования 'assert' вместо 'if...else'
-admin = False
+def test_get_salary_empty():
+    assert get_salary('') == (), 'Непустые данные'
 
 
-def get_params1():
-    if admin:
-        return (1, 'config')
-    return '403'
+def test_get_salary_wrong_format():
+    assert get_salary(' ') == (), 'Непустые данные'
 
 
-def get_params2():
-    assert admin == True  # если части равны то пропускаем дальше, если нет то ошибка
-    return (1, 'config')  # admin = False -> AssertionError
-
-
-get_params2()
+if __name__ == "__main__":
+    test_get_salary_fio()
+    test_get_salary_summ()
+    test_get_salary_empty()
+    test_get_salary_wrong_format()
