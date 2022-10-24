@@ -1,41 +1,34 @@
-import datetime
-from collections import namedtuple
-
-Salary = namedtuple('Salary', ('surname', 'name', 'worked', 'rate'))
+import unittest
 
 
-def get_salary(line):
-    ''' Вычисление зарплаты работника '''
-    line = line.split()
-    if line:
-        data = Salary(*line)
-        fio = ' '.join((data.surname, data.name))
-        salary = int(data.worked) * int(data.rate)
-        res = (fio, salary)
-    else:
-        res = ()
-    return res
+def sum_kv_ij(i, j):
+    return i * i + j * j
 
 
-def test_get_salary_summ():
-    assert get_salary('Лютиков    Руслан   60  1000') == \
-           ('Лютиков Руслан', 60000), 'Неверная сумма математики'
+class TestSumKv(unittest.TestCase):
+    def setUp(self):
+        print('Подготовка к запуску теста')
+
+    def tearDown(self):
+        print('Тест выполнен')
+
+    def testnotequal(self):
+        self.assertNotEqual(sum_kv_ij(2, 3), 23)
+
+    def testequal(self):
+        self.assertEqual(sum_kv_ij(2, 3), 13)
 
 
-def test_get_salary_fio():
-    assert get_salary('Лютиков    Руслан   60  1000')[0] == 'Лютиков Руслан', 'Неверное имя филологи'
+if __name__ == '__main__':
+    unittest.main()
 
-
-def test_get_salary_empty():
-    assert get_salary('') == (), 'Непустые данные'
-
-
-def test_get_salary_wrong_format():
-    assert get_salary(' ') == (), 'Непустые данные'
-
-
-if __name__ == "__main__":
-    test_get_salary_fio()
-    test_get_salary_summ()
-    test_get_salary_empty()
-    test_get_salary_wrong_format()
+# python3 service.py
+# Подготовка к запуску теста
+# Тест выполнен
+# Подготовка к запуску теста
+# Тест выполнен
+# ..
+# ----------------------------------------------------------------------
+# Ran 2 tests in 0.000s
+#
+# OK
