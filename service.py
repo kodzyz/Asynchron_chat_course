@@ -1,34 +1,44 @@
+def splitter(line, types=None, delimiter=None):
+    """ Разбивает текстовую строку и при необходимости
+    выполняет преобразование типов.
+    ...
+    """
+    fields = line.split(delimiter)
+    if types:
+        fields = [ty(val) for ty, val in zip(types, fields)]
+    return fields
+
+
 import unittest
 
 
-def sum_kv_ij(i, j):
-    return i * i + j * j
-
-
-class TestSumKv(unittest.TestCase):
+# Модульные тесты
+class TestSplitFunction(unittest.TestCase):
     def setUp(self):
-        print('Подготовка к запуску теста')
+        # Выполнить настройку тестов (если необходимо)
+        pass
 
     def tearDown(self):
-        print('Тест выполнен')
+        # Выполнить завершающие действия (если необходимо)
+        pass
 
-    def testnotequal(self):
-        self.assertNotEqual(sum_kv_ij(2, 3), 23)
+    def testsimplestring(self):
+        r = splitter('GOOG 100 490.50')
+        self.assertEqual(r, ['GOOG', '100', '490.50'])
 
-    def testequal(self):
-        self.assertEqual(sum_kv_ij(2, 3), 13)
+    def testtypeconvert(self):
+        r = splitter('GOOG 100 490.50', [str, int, float])
+        self.assertEqual(r, ['GOOG', 100, 490.5])
+
+    def testdelimiter(self):
+        r = splitter('GOOG,100,490.50', delimiter=',')
+        self.assertEqual(r, ['GOOG', '100', '490.50'])
+
+    def testonetype(self):
+        r = splitter('444,100,490.50', [int, int, str], delimiter=',')
+        self.assertEqual(r, [444, 100, '490.50'])
 
 
+# Запустить тестирование
 if __name__ == '__main__':
     unittest.main()
-
-# python3 service.py
-# Подготовка к запуску теста
-# Тест выполнен
-# Подготовка к запуску теста
-# Тест выполнен
-# ..
-# ----------------------------------------------------------------------
-# Ran 2 tests in 0.000s
-#
-# OK
