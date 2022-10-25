@@ -1,44 +1,47 @@
-def splitter(line, types=None, delimiter=None):
-    """ Разбивает текстовую строку и при необходимости
-    выполняет преобразование типов.
-    ...
-    """
-    fields = line.split(delimiter)
-    if types:
-        fields = [ty(val) for ty, val in zip(types, fields)]
-    return fields
+"""
+Фамилия    Имя      Часов  Ставка
+Иванов     Иван      45     400
+Докукин    Филимон   20     1000
+Ромашкин   Сидор     45     500
+"""
 
-
+import datetime
+from collections import namedtuple
 import unittest
 
-
-# Модульные тесты
-class TestSplitFunction(unittest.TestCase):
-    def setUp(self):
-        # Выполнить настройку тестов (если необходимо)
-        pass
-
-    def tearDown(self):
-        # Выполнить завершающие действия (если необходимо)
-        pass
-
-    def testsimplestring(self):
-        r = splitter('GOOG 100 490.50')
-        self.assertEqual(r, ['GOOG', '100', '490.50'])
-
-    def testtypeconvert(self):
-        r = splitter('GOOG 100 490.50', [str, int, float])
-        self.assertEqual(r, ['GOOG', 100, 490.5])
-
-    def testdelimiter(self):
-        r = splitter('GOOG,100,490.50', delimiter=',')
-        self.assertEqual(r, ['GOOG', '100', '490.50'])
-
-    def testonetype(self):
-        r = splitter('444,100,490.50', [int, int, str], delimiter=',')
-        self.assertEqual(r, [444, 100, '490.50'])
+Salary = namedtuple('Salary', ('surname', 'name', 'worked', 'rate'))
 
 
-# Запустить тестирование
-if __name__ == '__main__':
+def get_salary(line):
+    ''' Вычисление зарплаты работника '''
+    line = line.split()
+    if line:
+        data = Salary(*line)
+        fio = ' '.join((data.surname, data.name))
+        salary = int(data.worked) * int(data.rate)
+        res = (fio, salary)
+    else:
+        res = ()
+    return res
+
+
+class TestSalary(unittest.TestCase):
+    def test_get_salary_summ(self):
+        self.assertEqual(get_salary('Лютиков    Руслан    60    1000'), ('Лютиков Руслан', 60000))
+
+    def test_get_salary_fio(self):
+        self.assertEqual(get_salary('Лютиков    Руслан    60    1000')[0], 'Лютиков Руслан')
+
+    def test_get_salary_empty(self):
+        self.assertNotEqual(get_salary(''), ('1', '2'))
+
+
+if __name__ == "__main__":
     unittest.main()
+
+# python3 service.py
+# ...
+# ----------------------------------------------------------------------
+# Ran 3 tests in 0.000s
+#
+# OK
