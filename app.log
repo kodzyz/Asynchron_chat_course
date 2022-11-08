@@ -1,0 +1,5 @@
+INFO:root:info
+CRITICAL:root:critical
+INFO:root:info
+CRITICAL:root:critical
+INFO:app:Hello world from app logger
