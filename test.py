@@ -5,27 +5,18 @@ import logging
 # базовая настройка
 
 # запись в один журнал
-logging.basicConfig(level=logging.DEBUG)  # настройка для всех логеров
+logging.basicConfig(level=logging.DEBUG)  # настройка для всех логеров уровня 10
 
 # создает логер глобально на уровне библиотеки
-logging.info('info')
-logging.critical('critical')
-# -------------- под капотом сделает так
-# logger = logging.getLogger('root')
-# logger.info('info')
-# -------------- выведет в терминал
+logging.info('info')  # 20
+logging.critical('critical')  # 50
+# ----- сообщения INFO, CRITICAL видим:
 # INFO:root:info
 # CRITICAL:root:critical
 
-# создает логер вручную
-log = logging.getLogger('app')  # создаем или получаем логер имя = 'app', по дефолту имя = 'root'
+logger = logging.getLogger()  # по умолчанию 'root'
+# logger.setLevel(logging.CRITICAL)  # тут меняем уровень с 10 на 50
 
-# log.setLevel(logging.CRITICAL)  # уровень критические ошибки, значение 50
-# log.critical('critical from app')  # CRITICAL:app:critical from app - вывод в терминал
-
-# log.setLevel(logging.CRITICAL)
-# log.info('critical from app')  # ничего не отобразит потому что это самый высокий уровень 50, у 'info' значение 20
-
-log.setLevel(logging.DEBUG)  # отладочная инфо, значение 10
-log.info('critical from app')  # INFO:app:critical from app -> видим все уровни выше => 20, 30, 40, 50
-
+logger.info('hi I\'m message')  # и пытаемся записать сообщение с уровенем 20 -> и не видим все что ниже
+# ------ без 18 строчки
+# INFO:root:hi I'm message
