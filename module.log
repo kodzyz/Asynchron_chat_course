@@ -1,2 +1,2 @@
-CRITICAL:functions:faced error in functions module
-CRITICAL:service:Error in service
+CRITICAL   functions -- 2022-11-08 23:33:50,151:  faced error in functions module
+CRITICAL   service -- 2022-11-08 23:33:50,151:  Error in service
