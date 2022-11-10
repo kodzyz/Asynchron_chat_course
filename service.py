@@ -2,23 +2,22 @@
 
 import logging
 
-# глобальные переменные в логере для вывода данных
-logging.basicConfig(format='%(levelname)-10s %(module)s -- %(asctime)s:  %(message)s')
+# типы handler
 
-import functions  # после глоб.настр чтобы они успели примениться
+logging.basicConfig(filename='ann.log', format='%(levelname)-10s %(module)s -- %(asctime)s:  %(message)s')
 
-log = logging.getLogger('amm')
+import functions
+
+log = logging.getLogger('ann')
 
 # настройка handler
-handler = logging.FileHandler('amm.log')
-# изменение переменных вывода у определенного логера
-formater = logging.Formatter('%(levelname)-10s %(message)s')
-handler.setFormatter(formater)
-
+handler = logging.StreamHandler()
 log.addHandler(handler)
 
 log.critical("Error in service")
 
+#------терминал
+# Error in service
 
 
 
