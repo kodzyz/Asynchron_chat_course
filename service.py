@@ -1,4 +1,4 @@
-# 0:30 несколько декораторов
+# 0:37 декоратор с параметром
 
 # python3 service.py
 class Log:
@@ -17,50 +17,20 @@ class Log:
         return wrapper
 
 
-def level1(func):
-    def wrapper(*args, **kwargs):
-        print('deep 1')
-        r = func(*args, **kwargs)
-        print('deep 1 end')
-        return r
-
-    return wrapper
-
-
-def level2(func):
-    def wrapper(*args, **kwargs):
-        print('deep 2')
-        r = func(*args, **kwargs)
-        print('deep 2 end')
-        return r
-
-    return wrapper
-
-
-def level3(func):
-    def wrapper(*args, **kwargs):
-        print('deep 3')
-        r = func(*args, **kwargs)
-        print('deep 3 end')
-        return r
-
-    return wrapper
-
-
-@level1
-@level2
-@level3
+@Log()
 def square(x):
+    """ Вычисляет квадрат
+        >>> square(4):
+        16
+    """
     print('Идет выполнение задачи...')
     return x * x
 
 
 square(4)
+print(square.__doc__)
 
-# deep 1
-# deep 2
-# deep 3
 # Идет выполнение задачи...
-# deep 3 end
-# deep 2 end
-# deep 1 end
+#  Вычисляет квадрат
+#         >>> square(4):
+#         16
