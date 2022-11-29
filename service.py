@@ -5,13 +5,21 @@ class LessMethod:
         self.date_less = date_less
         self.all_less = all_less
 
-    @staticmethod
-    def standart_lesson(theme):
-        return {theme: f'{theme}'}
+    @property
+    def x(self):
+        return self._num_less
 
-    def up_meta(self):
-        return list(map(self.standart_lesson, self.all_less))
+    @x.setter
+    def x(self, value):
+        self._num_less = value + self.num_less
+
+    @x.deleter
+    def x(self):
+        del self._num_less
+
+    @x.getter
+    def x(self):
+        return self._num_less
 
 
-less1 = LessMethod(1, 2, [3, 4, 5])
-print(less1.up_meta())  # [{3: '3'}, {4: '4'}, {5: '5'}]
+
