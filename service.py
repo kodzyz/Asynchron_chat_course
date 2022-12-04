@@ -9,6 +9,7 @@ cars = [
 ]
 
 with sq.connect("cars.db") as con:
+    con.row_factory = sq.Row  # вариантом выходных данных является словарь
     cur = con.cursor()
 
     cur.executescript("""CREATE TABLE IF NOT EXISTS cars (
@@ -28,7 +29,12 @@ with sq.connect("cars.db") as con:
     # rows = cur.fetchmany(4)  # не более четырех первых записей
     # print(rows)  # [('Mercedes', 59127), ('Skoda', 11000), ('Volvo', 31000), ('Bentley', 352000)]
     for result in cur:  # записи в цикле
-        print(result)
-
-
-
+        # print(result)
+        # <sqlite3.Row object at 0x7f445385c8f0>
+        # <sqlite3.Row object at 0x7f4453700230>
+        # <sqlite3.Row object at 0x7f445385c8f0>
+        print(result['model'], result['price'])
+        # Mercedes 59127
+        # Skoda 11000
+        # Volvo 31000
+        # Bentley 352000
