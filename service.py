@@ -8,21 +8,28 @@ cars = [
     ('Bentley', 350000)
 ]
 
-with sq.connect("cars.db") as con:
+con = None
+try:
+    con = sq.connect("cars.db")
     cur = con.cursor()
 
-    cur.execute("""CREATE TABLE IF NOT EXISTS cars (
-        car_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        model TEXT,
-        price INTEGER
-    )""")
-
-    # for car in cars:
-    #     cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
-    #cur.executemany("INSERT INTO cars VALUES(NULL, ?, ?)", cars)
-    # именованные параметры
-    #cur.execute("UPDATE cars SET price = :Price WHERE model LIKE 'A%'", {'Price': 0})
-    # несколько отдельных SQL-команд
-    cur.executescript("""DELETE FROM cars WHERE model LIKE 'A%';
+    cur.executescript("""CREATE TABLE IF NOT EXISTS cars (
+            car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            model TEXT,
+            price INTEGER
+        );
+        BEGIN;
+        INSERT INTO cars VALUES(NULL,'Audi',52642);
+        INSERT INTO cars VALUES(NULL,'Mercedes',57127);
+        INSERT INTO cars VALUES(NULL,'Skoda',9000);
+        INSERT INTO cars VALUES(NULL,'Volvo',29000);
+        INSERT INTO cars VALUES(NULL,'Bentley',350000);
         UPDATE cars SET price = price+1000
-    """)
+    """)  # BEGIN - метка для отката rollback()
+    con.commit()  # сохраняет все изменения
+
+except sq.Error as e:
+    if con: con.rollback()  # откат бд
+    print("Ошибка выполнения запроса")
+finally:
+    if con: con.close()
