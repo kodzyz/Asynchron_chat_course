@@ -1,0 +1,36 @@
+2022-12-26 17:43:15,560 DEBUG decos.py Была вызвана функция main c параметрами () , {}. Вызов из модуля __main__
+2022-12-26 17:43:15,560 DEBUG decos.py Была вызвана функция config_load c параметрами () , {}. Вызов из модуля __main__
+2022-12-26 17:43:15,561 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-12-26 17:43:15,561 DEBUG server.py Инициализация парсера аргументов коммандной строки: ['server.py']
+2022-12-26 17:43:15,562 DEBUG server.py Аргументы успешно загружены.
+2022-12-26 17:43:15,588 INFO core.py Запущен сервер, порт для подключений: 7777 , адрес с которого принимаются подключения: . Если адрес не указан, принимаются соединения с любых адресов.
+2022-12-26 17:56:25,613 INFO core.py Установлено соедение с ПК ('127.0.0.1', 48792)
+2022-12-26 17:56:26,115 DEBUG decos.py Была вызвана функция get_message c параметрами (<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 48792)>,) , {}. Вызов из модуля common.utils
+2022-12-26 17:56:26,115 DEBUG core.py Разбор сообщения от клиента : {'action': 'presence', 'time': 1672066585.6266541, 'user': {'account_name': 'ko', 'pubkey': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvnBSlEngwvSGyeYsCXTn\ncUrZl4ppQftXcDRxB+i4lOedBVOjLe88i+RtOZmyjr9dLfxpK/kZAtxJegStSvCu\npptV5EvKyb6QXh0ekdGx6VclVAFQ7z8TUW/Wz1S0Ipi44AYLpFINrRRiTMMrNKwc\nTNGM36ZWznqqy8U/mwL2rg3qWrdY4Nlttj38Z+X9Ds9g2SZRFtD64yzkX/LPf55a\n+o8BF2KBokpkkiVRwpqKrhWqOYw03FrTg4YFe5pgyr/LHwCrCgfDAfa+GzvhnElY\nH9ogMs8W8mBJCnl2jVpwndkprISY0I8whbdSevBDcT4zQhaGKz8KWgE/xZmHm+c6\nYQIDAQAB\n-----END PUBLIC KEY-----'}}
+2022-12-26 17:56:26,116 DEBUG core.py Start auth process for {'account_name': 'ko', 'pubkey': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvnBSlEngwvSGyeYsCXTn\ncUrZl4ppQftXcDRxB+i4lOedBVOjLe88i+RtOZmyjr9dLfxpK/kZAtxJegStSvCu\npptV5EvKyb6QXh0ekdGx6VclVAFQ7z8TUW/Wz1S0Ipi44AYLpFINrRRiTMMrNKwc\nTNGM36ZWznqqy8U/mwL2rg3qWrdY4Nlttj38Z+X9Ds9g2SZRFtD64yzkX/LPf55a\n+o8BF2KBokpkkiVRwpqKrhWqOYw03FrTg4YFe5pgyr/LHwCrCgfDAfa+GzvhnElY\nH9ogMs8W8mBJCnl2jVpwndkprISY0I8whbdSevBDcT4zQhaGKz8KWgE/xZmHm+c6\nYQIDAQAB\n-----END PUBLIC KEY-----'}
+2022-12-26 17:56:26,126 DEBUG core.py Unknown username, sending {'response': 400, 'error': 'Пользователь не зарегистрирован.'}
+2022-12-26 17:56:26,126 DEBUG decos.py Была вызвана функция send_message c параметрами (<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 48792)>, {'response': 400, 'error': 'Пользователь не зарегистрирован.'}) , {}. Вызов из модуля common.utils
+2022-12-26 17:59:44,655 INFO core.py Установлено соедение с ПК ('127.0.0.1', 53530)
+2022-12-26 17:59:45,156 DEBUG decos.py Была вызвана функция get_message c параметрами (<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 53530)>,) , {}. Вызов из модуля common.utils
+2022-12-26 17:59:45,157 DEBUG core.py Разбор сообщения от клиента : {'action': 'presence', 'time': 1672066784.6675282, 'user': {'account_name': 'ko', 'pubkey': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvnBSlEngwvSGyeYsCXTn\ncUrZl4ppQftXcDRxB+i4lOedBVOjLe88i+RtOZmyjr9dLfxpK/kZAtxJegStSvCu\npptV5EvKyb6QXh0ekdGx6VclVAFQ7z8TUW/Wz1S0Ipi44AYLpFINrRRiTMMrNKwc\nTNGM36ZWznqqy8U/mwL2rg3qWrdY4Nlttj38Z+X9Ds9g2SZRFtD64yzkX/LPf55a\n+o8BF2KBokpkkiVRwpqKrhWqOYw03FrTg4YFe5pgyr/LHwCrCgfDAfa+GzvhnElY\nH9ogMs8W8mBJCnl2jVpwndkprISY0I8whbdSevBDcT4zQhaGKz8KWgE/xZmHm+c6\nYQIDAQAB\n-----END PUBLIC KEY-----'}}
+2022-12-26 17:59:45,157 DEBUG core.py Start auth process for {'account_name': 'ko', 'pubkey': '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvnBSlEngwvSGyeYsCXTn\ncUrZl4ppQftXcDRxB+i4lOedBVOjLe88i+RtOZmyjr9dLfxpK/kZAtxJegStSvCu\npptV5EvKyb6QXh0ekdGx6VclVAFQ7z8TUW/Wz1S0Ipi44AYLpFINrRRiTMMrNKwc\nTNGM36ZWznqqy8U/mwL2rg3qWrdY4Nlttj38Z+X9Ds9g2SZRFtD64yzkX/LPf55a\n+o8BF2KBokpkkiVRwpqKrhWqOYw03FrTg4YFe5pgyr/LHwCrCgfDAfa+GzvhnElY\nH9ogMs8W8mBJCnl2jVpwndkprISY0I8whbdSevBDcT4zQhaGKz8KWgE/xZmHm+c6\nYQIDAQAB\n-----END PUBLIC KEY-----'}
+2022-12-26 17:59:45,159 DEBUG core.py Unknown username, sending {'response': 400, 'error': 'Пользователь не зарегистрирован.'}
+2022-12-26 17:59:45,159 DEBUG decos.py Была вызвана функция send_message c параметрами (<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 53530)>, {'response': 400, 'error': 'Пользователь не зарегистрирован.'}) , {}. Вызов из модуля common.utils
+2022-12-26 20:53:08,675 DEBUG decos.py Была вызвана функция main c параметрами () , {}. Вызов из модуля __main__
+2022-12-26 20:53:08,676 DEBUG decos.py Была вызвана функция config_load c параметрами () , {}. Вызов из модуля __main__
+2022-12-26 20:53:08,676 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-12-26 20:53:08,676 DEBUG server.py Инициализация парсера аргументов коммандной строки: ['server.py']
+2022-12-26 20:53:08,677 DEBUG server.py Аргументы успешно загружены.
+2022-12-26 20:53:08,701 INFO core.py Запущен сервер, порт для подключений: 7777 , адрес с которого принимаются подключения: . Если адрес не указан, принимаются соединения с любых адресов.
+2022-12-26 20:56:49,755 DEBUG decos.py Была вызвана функция main c параметрами () , {}. Вызов из модуля __main__
+2022-12-26 20:56:49,755 DEBUG decos.py Была вызвана функция config_load c параметрами () , {}. Вызов из модуля __main__
+2022-12-26 20:56:49,755 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-12-26 20:56:49,755 DEBUG server.py Инициализация парсера аргументов коммандной строки: ['server.py']
+2022-12-26 20:56:49,756 DEBUG server.py Аргументы успешно загружены.
+2022-12-26 20:56:49,782 INFO core.py Запущен сервер, порт для подключений: 7777 , адрес с которого принимаются подключения: . Если адрес не указан, принимаются соединения с любых адресов.
+2022-12-26 21:51:38,535 DEBUG decos.py Была вызвана функция main c параметрами () , {}. Вызов из модуля __main__
+2022-12-26 21:51:38,536 DEBUG decos.py Была вызвана функция config_load c параметрами () , {}. Вызов из модуля __main__
+2022-12-26 21:51:38,537 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-12-26 21:51:38,537 DEBUG server.py Инициализация парсера аргументов коммандной строки: ['server.py']
+2022-12-26 21:51:38,538 DEBUG server.py Аргументы успешно загружены.
+2022-12-26 21:51:38,564 INFO core.py Запущен сервер, порт для подключений: 7777 , адрес с которого принимаются подключения: . Если адрес не указан, принимаются соединения с любых адресов.
